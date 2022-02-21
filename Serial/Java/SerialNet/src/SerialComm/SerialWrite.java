@@ -3,8 +3,6 @@ package SerialComm;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import javax.xml.bind.DatatypeConverter;
-
 public class SerialWrite extends Thread {
 	OutputStream out;
 	
@@ -12,19 +10,24 @@ public class SerialWrite extends Thread {
 		this.out = out;
 	}
 	
-	public void send() 
+	public void run() 
 	{
-		String cmd = "02C005000000C503";
-		
-		try 
-		{
-			out.write(decodeUsingDataTypeConverter(cmd));
-			out.flush();
-		} catch (IOException e) {e.printStackTrace();}
-	}
-	
-	public byte[] decodeUsingDataTypeConverter(String hexString) {
-	    return DatatypeConverter.parseHexBinary(hexString);
+		int move = 1;
+		//while(true) {
+			try 
+			{
+				//out.write(DataProc.decodeUsingDataTypeConverter(DataProc.createPacketString("C2", 1, 2 + move, "FF", "FF", "00")));
+				out.write(DataProc.decodeUsingDataTypeConverter("02C2070102FFFF00C603"));
+				out.flush();
+			} catch (IOException e) {e.printStackTrace();}
+			
+//			try {
+//				sleep(5000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+		//}
 	}
 }
 

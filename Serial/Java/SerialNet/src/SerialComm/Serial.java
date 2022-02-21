@@ -50,9 +50,9 @@ public class Serial {
 
 			
 			//new SerialRead(serialPort.getInputStream()).start();
-			new SerialWrite(serialPort.getOutputStream()).send();
+			//new SerialWrite(serialPort.getOutputStream()).run();
 			
-		} catch (NoSuchPortException | PortInUseException | UnsupportedCommOperationException | IOException e) {
+		} catch (NoSuchPortException | PortInUseException | UnsupportedCommOperationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
